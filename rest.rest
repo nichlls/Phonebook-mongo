@@ -1,14 +1,14 @@
-POST http://localhost:3001/api/persons
+PUT http://localhost:3001/api/persons/66bf886fd9d038838b047c39
 Content-Type: application/json
 
 {
-    "name": "Test Test",
-    "number": "456-235-2365"
+    "name": "Arto hellas",
+    "number": "643-234-876"
 }
 
 ###
 
-GET http://localhost:3001/api/persons
+GET http://localhost:3001/api/persons/66bf885c70ba4f17c24fc9e7
 
 
 ###
