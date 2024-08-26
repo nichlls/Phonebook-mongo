@@ -106,8 +106,8 @@ app.post("/api/persons", (request, response, next) => {
   };
 
   Person.create(person)
-    .then(() => {
-      response.json(person);
+    .then((newPerson) => {
+      response.json(newPerson);
     })
     .catch((error) => next(error));
 });
