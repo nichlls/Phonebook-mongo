@@ -24,6 +24,8 @@ const errorHandler = (error, request, response, next) => {
 
   if (error.name === "CastError") {
     return response.status(400).send({ error: "Malformatted ID" });
+  } else if (error.name === "ValidationError") {
+    return response.status(400).json({ error: error.message });
   }
 
   next(error);
@@ -98,10 +100,10 @@ app.post("/api/persons", (request, response, next) => {
     return response.status(400).json({ error: "Number must be supplied" });
   }
 
-  const person = new Person({
+  const person = {
     name: data.name,
     number: data.number,
-  });
+  };
 
   Person.create(person)
     .then(() => {
@@ -127,7 +129,10 @@ app.put("/api/persons/:id", (request, response, next) => {
     number: data.number,
   };
 
-  Person.findByIdAndUpdate(id, person)
+  Person.findByIdAndUpdate(id, person, {
+    new: true,
+    runValidators: true,
+  })
     .then(() => {
       response.json(person);
     })

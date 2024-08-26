@@ -2,13 +2,17 @@ PUT http://localhost:3001/api/persons/66c1291ec7d8570c7fd110b9
 Content-Type: application/json
 
 {
-    "name": "Arto Hellas",
-    "number": "643-234-876"
+    "name": "A",
+    "number": "321-354-987"
 }
 
 ###
 
 GET http://localhost:3001/api/persons/66c1291ec7d8570c7fd110b2
+
+###
+
+GET http://localhost:3001/api/persons/
 
 
 ###
